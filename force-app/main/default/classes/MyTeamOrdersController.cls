@@ -1,10 +1,10 @@
 public with sharing class MyTeamOrdersController {
-    public decimal SumOders{
+    public decimal sumOders{
         get{
-			AggregateResult groupedResults = [SELECT SUM(TotalAmount) total FROM Order];
+			AggregateResult groupedResults = [SELECT SUM(TotalAmount) total FROM Order WHERE Status = 'Ordered'];
 			return (decimal)groupedResults.get('total');
 
         }
-        set;
+        private set;
     }
 }
